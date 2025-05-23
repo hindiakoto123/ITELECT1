@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Laundry Pick-up Request</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <style>
+    .hero-section {
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(laundry\ bg.jpg) center center/cover no-repeat;
+      color: white;
+      padding: 100px 0;
+      text-align: center;
+      height: 70vh;
+    }
+    .hero-section h1 {
+      font-size: 3rem;  
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .hero-section p {
+      font-size: 1.2 rem;
+      margin-bottom: 30px;
+    }
+    .service-card img {
+      height: 200px;
+      object-fit: cover;
+    }
+    footer {
+      background: #f8f9fa;
+      padding: 20px;
+      text-align: center;
+    }
+    .custom-navbar {
+      background: linear-gradient(to right, #1e3c72, #2a5298);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    .nav-link {
+      color: white !important;
+      font-weight: 500;
+      margin-right: 10px;
+      transition: color 0.3s ease;
+    }
+    .nav-hover:hover {
+      color: #ffd700 !important;
+    }
+    .navbar-brand img {
+      height: 40px;
+    }
+    .btn-outline-light:hover {
+      background-color: #ffd700;
+      color: #000000 !important;
+      border-color: #000000;
+    }
+    
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="logo.jpg" alt="Logo" class="me-2 rounded-circle" />
+        <span class="fw-bold fs-4">Drift & Dry Laundry Co.</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav me-3">
+          <li class="nav-item">
+            <a class="nav-link nav-hover" href="#home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-hover" href="#services">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-hover" href="#" data-bs-toggle="modal" data-bs-target="#bookModal">Book Now</a>
+          </li>
+        </ul>
+        <a href="#" class="btn btn-outline-light me-2" id="authButton" data-bs-toggle="modal" data-bs-target="#signupModal">Log In</a>
+      </div>
+    </div>
+  </nav>
+  
+<section class="hero-section" id="home">
+  <div class="container">
+    <h1>Your Laundry, Our Priority.</h1>
+    <p class="lead">Quick. Clean. Convenient.</p>
+    <a href="#" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#bookModal">Book Pickup</a>
+  </div>
+</section>
+
+<section class="py-5" id="services">
+  <div class="container">
+    <h2 class="text-center mb-4">Our Services</h2>
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card service-card">
+          <img src="wash and fold.jpg" class="card-img-top" alt="Wash and Fold" />
+          <div class="card-body">
+            <h5 class="card-title">Wash and Fold</h5>
+            <p class="card-text">Clean and neatly folded laundry delivered to your door.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card service-card">
+          <img src="dry clean.jpg" class="card-img-top" alt="Dry Cleaning" />
+          <div class="card-body">
+            <h5 class="card-title">Dry Cleaning</h5>
+            <p class="card-text">Gentle cleaning for your delicate and designer wear.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card service-card">
+          <img src="iron.jpg" class="card-img-top" alt="Ironing" />
+          <div class="card-body">
+            <h5 class="card-title">Ironing</h5>
+            <p class="card-text">Perfectly pressed clothes delivered wrinkle-free.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content shadow-lg border-0">
+      <form id="loginForm">
+        <div class="modal-header bg-primary text-white border-bottom-0">
+          <h5 class="modal-title w-100 text-center" id="loginModalLabel">Welcome!</h5>
+        </div>
+        <div class="modal-body px-4">
+          <p class="text-center text-muted mb-4">Please log in to your account</p>
+          <input type="email" id="loginEmail" class="form-control mb-3" placeholder="Email" required />
+          <input type="password" id="loginPassword" class="form-control mb-3" placeholder="Password" required />
+          <div id="loginError" class="text-danger small mb-2" style="display: none;">Invalid email or password.</div>
+          <button type="submit" class="btn btn-primary w-100">Log In</button>
+          <p class="text-center mt-3 mb-0 small">
+            Don't have an account?
+            <a href="#" id="createAccountLink">Create Account</a>
+          </p>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="createAccountModal" tabindex="-1" aria-labelledby="createAccountModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content shadow-lg border-0">
+      <form id="createAccountForm">
+        <div class="modal-header bg-success text-white border-bottom-0">
+          <h5 class="modal-title w-100 text-center" id="createAccountModalLabel">Create Account</h5>
+        </div>
+        <div class="modal-body px-4">
+          <p class="text-center text-muted mb-4">Fill in your details to sign up</p>
+          <input type="text" id="signupName" class="form-control mb-3" placeholder="Name" required />
+          <input type="email" id="signupEmail" class="form-control mb-3" placeholder="Email Address" required />
+          <input type="password" id="signupPassword" class="form-control mb-3" placeholder="Password" required />
+          <input type="password" id="signupConfirmPassword" class="form-control mb-3" placeholder="Confirm Password" required />
+          <div id="passwordMismatch" class="text-danger small mb-2" style="display: none;">Passwords do not match.</div>
+          <button type="submit" class="btn btn-success w-100">Create Account</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="bookModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content shadow">
+      <form id="bookForm">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title">
+            <i class="bi bi-calendar2-check-fill me-2"></i>Book Laundry Pickup
+          </h5>
+          <button class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="bookName" class="form-label">Your Name</label>
+            <input type="text" id="bookName" class="form-control" placeholder="Enter your full name" required />
+          </div>
+
+          <div class="mb-3">
+            <label for="bookAddress" class="form-label">Pickup Address</label>
+            <input type="text" id="bookAddress" class="form-control" placeholder="Street, City, ZIP" required />
+          </div>
+
+          <div class="mb-3">
+            <label for="bookDateTime" class="form-label">Pickup Date & Time</label>
+            <input type="datetime-local" id="bookDateTime" class="form-control" required />
+          </div>
+
+          <div class="mb-2">
+            <label class="form-label">Select Services</label>
+            <div class="form-check mt-2">
+              <input class="form-check-input" type="checkbox" id="selectAll" />
+              <label class="form-check-label" for="selectAll"><strong>Select All</strong></label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input service-option" type="checkbox" id="washFold" />
+              <label class="form-check-label" for="washFold">Wash and Fold</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input service-option" type="checkbox" id="dryClean" />
+              <label class="form-check-label" for="dryClean">Dry Cleaning</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input service-option" type="checkbox" id="ironing" />
+              <label class="form-check-label" for="ironing">Ironing</label>
+            </div>
+          </div>
+
+          <div id="bookConfirm" class="text-success mt-3 fw-medium" style="display: none;"></div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary w-100">
+            <i class="bi bi-send-check me-1"></i>Submit Request
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2025 Drift & Dry Laundry Co. All rights reserved.</p>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  // track login status
+  let isLoggedIn = false;
+
+  // Select All checkbox 
+  document.getElementById("selectAll").addEventListener("change", function () {
+    const isChecked = this.checked;
+    document.querySelectorAll(".service-option").forEach(box => {
+      box.checked = isChecked;
+    });
+  });
+
+  // Sign Up form 
+  document.getElementById("createAccountForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const name = document.getElementById("signupName").value.trim();
+  const email = document.getElementById("signupEmail").value.trim();
+  const password = document.getElementById("signupPassword").value;
+  const confirmPassword = document.getElementById("signupConfirmPassword").value;
+  const mismatchMsg = document.getElementById("passwordMismatch");
+
+  if (password !== confirmPassword) {
+    mismatchMsg.style.display = "block";
+    return;
+  } else {
+    mismatchMsg.style.display = "none";
+  }
+
+  // Save to localStorage
+  const users = JSON.parse(localStorage.getItem("users") || "[]");
+  users.push({ email, password, name });
+  localStorage.setItem("users", JSON.stringify(users));
+
+  alert("Account created for " + name);
+
+  const modal = bootstrap.Modal.getInstance(document.getElementById("createAccountModal"));
+  modal.hide();
+  this.reset();
+
+  // Update "Log In" button to "Log Out"
+  const authButton = document.getElementById("authButton");
+  authButton.textContent = "Log Out";
+  authButton.removeAttribute("data-bs-toggle");
+  authButton.removeAttribute("data-bs-target");
+
+  // Mark user as logged in
+    isLoggedIn = true;
+
+  // logout functionality
+  authButton.onclick = function (e) {
+    e.preventDefault();
+    if (confirm("Are you sure you want to log out?")) {
+      authButton.textContent = "Log In";
+      authButton.setAttribute("data-bs-toggle", "modal");
+      authButton.setAttribute("data-bs-target", "#signupModal");
+      authButton.onclick = null; 
+      isLoggedIn = false; // Log the user out
+    }
+  };
+});
+
+  // Book Now form 
+  document.getElementById("bookForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  // Check if user is logged in
+    if (!isLoggedIn) {
+      // Display message
+      const message = "You need to log in first to submit your request. Please sign in if you already have an account and create an account if you don't.";
+      alert(message);
+
+      // Automatically close the Book Now form modal
+      const bookModal = bootstrap.Modal.getInstance(document.getElementById("bookModal"));
+      bookModal.hide();
+
+      // Trigger the login modal if not logged in
+      const loginModal = new bootstrap.Modal(document.getElementById("signupModal"));
+      loginModal.show();
+
+      return; 
+    }
+
+  const name = document.getElementById("bookName").value.trim();
+  const address = document.getElementById("bookAddress").value.trim();
+  const datetime = document.getElementById("bookDateTime").value;
+  const services = Array.from(document.querySelectorAll(".service-option"))
+                        .filter(opt => opt.checked)
+                        .map(opt => opt.nextElementSibling.textContent);
+
+  if (services.length === 0) {
+    alert("Please select at least one service.");
+    return;
+  }
+
+  const message = `Thank you, ${name}! Your laundry pickup for ${services.join(", ")} is scheduled at ${address} on ${new Date(datetime).toLocaleString()}.`;
+
+  const confirmation = document.getElementById("bookConfirm");
+  confirmation.textContent = message;
+  confirmation.style.display = 'block';
+
+  // Reset form fields after submission
+  this.reset();
+});
+
+// Clear modal on close
+const bookModal = document.getElementById("bookModal");
+  bookModal.addEventListener('hidden.bs.modal', function () {
+    document.getElementById("bookForm").reset(); // reset the form
+    document.getElementById("bookConfirm").style.display = 'none'; // hide message
+    document.getElementById("bookConfirm").textContent = ''; // clear message text
+  });
+
+// Create Account link 
+document.getElementById("createAccountLink").addEventListener("click", function (e) {
+  e.preventDefault();
+  const loginModal = bootstrap.Modal.getInstance(document.getElementById("signupModal"));
+  loginModal.hide();
+
+  const createAccountModal = new bootstrap.Modal(document.getElementById("createAccountModal"));
+  createAccountModal.show();
+});
+
+//Login form submission
+document.getElementById("loginForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const email = document.getElementById("loginEmail").value.trim();
+  const password = document.getElementById("loginPassword").value;
+  const loginError = document.getElementById("loginError");
+
+  // Saved/Default Account
+  const adminEmail = "admin@gmail.com";
+  const adminPassword = "admin123";
+
+  const users = JSON.parse(localStorage.getItem("users") || "[]");
+  const isAdmin = email === adminEmail && password === adminPassword;
+  const isUser = users.some(user => user.email === email && user.password === password);
+
+  if (isAdmin || isUser) {
+    loginError.style.display = "none";
+    alert(`Logged in as ${email}`);
+
+    const loginModal = bootstrap.Modal.getInstance(document.getElementById("signupModal"));
+    loginModal.hide();
+    this.reset();
+
+    const authButton = document.getElementById("authButton");
+    authButton.textContent = "Log Out";
+    authButton.removeAttribute("data-bs-toggle");
+    authButton.removeAttribute("data-bs-target");
+
+    isLoggedIn = true;
+
+    authButton.onclick = function (e) {
+      e.preventDefault();
+      if (confirm("Are you sure you want to log out?")) {
+        authButton.textContent = "Log In";
+        authButton.setAttribute("data-bs-toggle", "modal");
+        authButton.setAttribute("data-bs-target", "#signupModal");
+        authButton.onclick = null;
+        isLoggedIn = false;
+      }
+    };
+  } else {
+    loginError.style.display = "block";
+  }
+});
+
+</script>
+</body>
+</html>
